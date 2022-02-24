@@ -6,12 +6,9 @@ $result = CRest::installApp();
 $botCode = 'PromoBot';
 
 // handler for events "handler.php"
-
-$handlerBackUrl = ($_SERVER['HTTPS'] === 'on' || $_SERVER['SERVER_PORT'] === '443' ? 'https' : 'http') . '://'
-                  . $_SERVER['SERVER_NAME']
-                  . (in_array($_SERVER['SERVER_PORT'],	['80', '443'], true) ? '' : ':' . $_SERVER['SERVER_PORT'])
-                  . str_replace($_SERVER['DOCUMENT_ROOT'], '',__DIR__)
-                  . '/handler.php';
+// Поправил путь до хендлера, т.к по старому пути чат бот отказывался работать
+// (видимо был какой-то переезд либо проекта либо вебсервера)
+$handlerBackUrl = "https://team.promo-bot.ru/app/chat/handler.php";
 
 // If is reinstall
 // delete old bot
